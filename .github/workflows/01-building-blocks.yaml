@@ -14,9 +14,9 @@ jobs:
     goodbye-job:
         runs-on: ubuntu-latest
         steps:
-            - name: Goodbye World exit 1
+            - name: Goodbye World Success
               run: |
                 echo "Goodbye World"
-                exit 1
+                exit 0
             - name: Goodbye World
               run: echo "Goodbye World"
