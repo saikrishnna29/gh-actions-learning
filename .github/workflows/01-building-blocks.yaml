@@ -1,0 +1,22 @@
+name: 01-First Building Block
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+    hello-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Hello World
+              run: echo "Hello World"
+    goodbye-job:
+        runs-on: ubuntu-latest
+        steps:
+            # - name: Goodbye World
+            #   run: |
+            #     echo "Goodbye World"
+            #     exit 1
+            - name: Goodbye World
+              run: echo "Goodbye World"
