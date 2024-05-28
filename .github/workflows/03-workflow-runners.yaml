@@ -1,0 +1,16 @@
+name: 03-workflow-runners
+
+on: push
+
+jobs:
+    ubuntu-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Show OS
+              run: echo "OS is ${{ runner.os }}"
+    windows-check:
+        runs-on: windows-latest
+        steps:
+            - name: Show OS
+              shell: bash
+              run: echo "OS is $RUNNER_OS"
