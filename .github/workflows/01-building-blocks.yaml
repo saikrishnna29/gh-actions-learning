@@ -1,9 +1,9 @@
 name: 01-First Building Block
 
-on:
-  push:
-    branches:
-      - main
+on: workflow_dispatch
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
     hello-job:
