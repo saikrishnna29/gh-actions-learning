@@ -1,19 +1,19 @@
 name: 04-Using-Actions
 
-on: push
+on: workflow_dispatch
 
 jobs:
     build: 
         runs-on: ubuntu-latest
         defaults:
-            run:
+            run: # when we use defaults run, it will be applied to all the steps
                 working-directory: 04-using-actions/react-app
         steps:
             - uses: actions/checkout@v4
               name: Checkout the repository
             
             - name: Printing folders
-              run: ls -l
+              run: ls -l # it will print the folders in the react-app directory and not the root directory
 
             - name: Set up node
               uses: actions/setup-node@v4
