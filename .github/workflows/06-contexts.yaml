@@ -1,0 +1,78 @@
+name: 06-contexts
+
+run-name: Contexts in GitHub Actions | ${{ inputs.debug }}
+
+env:
+    GITHUB_RUN_ID: ${{ github.run_id }}
+    GITHUB_RUN_NUMBER: ${{ github.run_number }}
+    # GITHUB_RUN_ATTEMPT: ${{ github.run_attempt }}
+    GITHUB_ACTOR: ${{ github.actor }}
+    GITHUB_REPOSITORY: ${{ github.repository }}
+    GITHUB_EVENT_NAME: ${{ github.event_name }}
+    GITHUB_EVENT_PATH: ${{ github.event_path }}
+    GITHUB_WORKSPACE: ${{ github.workspace }}
+    GITHUB_SHA: ${{ github.sha }}
+    GITHUB_REF: ${{ github.ref }}
+    GITHUB_HEAD_REF: ${{ github.head_ref }}
+    GITHUB_BASE_REF: ${{ github.base_ref }}
+    # GITHUB_SERVER_URL: ${{ github.server_url }}
+    # GITHUB_API_URL: ${{ github.api_url }}
+    # GITHUB_GRAPHQL_URL: ${{ github.graphql_url }}
+    # GITHUB_WORKFLOW: ${{ github.workflow }}
+    # GITHUB_ACTION: ${{ github.action }}
+    # GITHUB_ACTION_REPOSITORY: ${{ github.action_repository }}
+    # GITHUB_ACTION_REF: ${{ github.action_ref }}
+    # GITHUB_PATH: ${{ github.path }}
+    # GITHUB_ENV: ${{ github.env }}
+    # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # GITHUB_JOB: ${{ github.job }}
+    # GITHUB_RETENTION_DAYS: ${{ github.retention_days }}
+    # GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+    MY_ENV_VAR: 'This is my workflow environment variable'
+
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+        inputs:
+            debug:
+                description: 'Enable debug mode'
+                type: boolean
+                default: false
+
+jobs:
+    echo-data_1:
+        env:
+            MY_ENV_VAR: 'This is my job environment variable'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo data 1
+              run: |
+                  echo "GITHUB_RUN_ID: $GITHUB_RUN_ID"
+                  echo "GITHUB_RUN_NUMBER: $GITHUB_RUN_NUMBER"
+                  echo "GITHUB_WORKFLOW: ${{ github.workflow }}"
+                  echo "GITHUB_ACTION: ${{ github.action }}"
+                  echo "GITHUB_ACTOR: $GITHUB_ACTOR"
+                  echo "GITHUB_HEAD_REF: $GITHUB_HEAD_REF"
+                  echo "GITHUB_BASE_REF: $GITHUB_BASE_REF"
+                  echo "$MY_ENV_VAR"
+    echo-data_2:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo data 2
+              env:
+                  MY_ENV_VAR: 'This is my step environment variable'
+              run: |
+                  echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
+                  echo "GITHUB_EVENT_NAME: $GITHUB_EVENT_NAME"
+                  echo "GITHUB_EVENT_PATH: $GITHUB_EVENT_PATH"
+                  echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+                  echo "GITHUB_SHA: $GITHUB_SHA"
+                  echo "GITHUB_REF: $GITHUB_REF"
+    echo-data_3:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo data 3
+              run: |
+                  echo "Accessing workflow environment variable: $MY_ENV_VAR"
