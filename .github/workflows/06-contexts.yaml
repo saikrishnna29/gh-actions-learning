@@ -20,20 +20,14 @@ env:
     # GITHUB_GRAPHQL_URL: ${{ github.graphql_url }}
     # GITHUB_WORKFLOW: ${{ github.workflow }}
     # GITHUB_ACTION: ${{ github.action }}
-    # GITHUB_ACTION_REPOSITORY: ${{ github.action_repository }}
-    # GITHUB_ACTION_REF: ${{ github.action_ref }}
-    # GITHUB_PATH: ${{ github.path }}
     # GITHUB_ENV: ${{ github.env }}
-    # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     # GITHUB_JOB: ${{ github.job }}
-    # GITHUB_RETENTION_DAYS: ${{ github.retention_days }}
-    # GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
     MY_ENV_VAR: 'This is my workflow environment variable'
 
 on:
-    push:
-        branches:
-            - main
+    # push:
+    #     branches:
+    #         - main
     workflow_dispatch:
         inputs:
             debug:
