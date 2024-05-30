@@ -1,0 +1,16 @@
+name: 05-event-filter-activity-types
+
+on:
+    pull_request:
+        types:
+            - opened
+            - synchronize
+        branches:
+            - main
+
+jobs:
+    echo-step:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo step
+              run: echo "This is a pull request opened or synchronize event"
