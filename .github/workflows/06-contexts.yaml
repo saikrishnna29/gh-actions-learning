@@ -15,13 +15,6 @@ env:
     GITHUB_REF: ${{ github.ref }}
     GITHUB_HEAD_REF: ${{ github.head_ref }}
     GITHUB_BASE_REF: ${{ github.base_ref }}
-    # GITHUB_SERVER_URL: ${{ github.server_url }}
-    # GITHUB_API_URL: ${{ github.api_url }}
-    # GITHUB_GRAPHQL_URL: ${{ github.graphql_url }}
-    # GITHUB_WORKFLOW: ${{ github.workflow }}
-    # GITHUB_ACTION: ${{ github.action }}
-    # GITHUB_ENV: ${{ github.env }}
-    # GITHUB_JOB: ${{ github.job }}
     MY_ENV_VAR: 'This is my workflow environment variable'
 
 on:
@@ -71,3 +64,5 @@ jobs:
             - name: Echo data 3
               run: |
                   echo "Accessing workflow environment variable: $MY_ENV_VAR"
+                  echo "Accessing vars defined in github"
+                  echo "AWS_REGION: ${{ vars.AWS_REGION }}"
