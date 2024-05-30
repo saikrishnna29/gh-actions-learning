@@ -70,6 +70,7 @@ jobs:
                   echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
                   echo "GITHUB_SHA: $GITHUB_SHA"
                   echo "GITHUB_REF: $GITHUB_REF"
+                  echo "$MY_ENV_VAR"
     echo-data_3:
         runs-on: ubuntu-latest
         steps:
