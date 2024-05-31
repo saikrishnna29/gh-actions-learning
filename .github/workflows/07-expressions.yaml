@@ -1,0 +1,32 @@
+name: 07-expressions
+
+run-name: Using expressions ${{ inputs.debug && 'ON' || 'OFF' }}
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: 'Enable debug mode'
+        type: boolean
+        default: false
+
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: GitHub context
+              if: inputs.debug == 'true' && github.event_name == 'push'
+              run: |
+                echo "Runner OS: ${{ runner.os }}"
+                echo "GitHub branch: ${{ github.ref }}"
+                echo "GitHub event name: ${{ github.event_name }}"
+            - name: Greetings
+              if: inputs.debug == 'true' || github.ref == 'refs/heads/main'
+              run: |
+                echo "Hello World! on ${{ github.ref_name }}"
+            - name: Debug mode
+              run: |
+                echo "Debug mode is ${{ inputs.debug }}"
+
+
