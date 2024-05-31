@@ -16,7 +16,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: GitHub context
-              if: inputs.debug == 'true'
+              if: ${{ inputs.debug }}
               run: |
                 echo "Runner OS: ${{ runner.os }}"
                 echo "GitHub branch: ${{ github.ref }}"
