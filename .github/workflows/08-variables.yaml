@@ -13,7 +13,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             JOB_VAR: "I'M A JOB VARIABLE"
-            OVERWRITTEN: "I'LL BE OVERWRITTEN AT JOB LEVEL"
+            OVERWRITTEN: "I'VE BE OVERWRITTEN AT JOB LEVEL"
         steps:
             - name: Print ENV variables
               env:
