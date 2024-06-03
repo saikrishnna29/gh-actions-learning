@@ -1,0 +1,24 @@
+name: 09-functions
+
+on:
+    pull_request:
+    workflow_dispatch:
+    push:
+
+jobs:
+    echo_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo
+              run: echo "Hello, world!"
+            - name: Testing success
+              if: success()
+              run: echo "Success!"
+            - name: failed step
+              run: exit 1
+            - name: Testing failure
+              if: failure()
+              run: echo "Failure!"
+            - name: Event type
+              if: contains(fromJSON('["push", "pull_request"]'), github.event_name) # This is the function that we are testing
+              run: echo "Event type is push or pull_request"
