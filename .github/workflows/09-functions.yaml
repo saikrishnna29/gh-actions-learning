@@ -20,5 +20,5 @@ jobs:
               if: failure()
               run: echo "Failure!"
             - name: Event type
-              if: contains(fromJSON('["push", "pull_request"]'), github.event_name) # This is the function that we are testing
+              if: contains(fromJSON('["push", "pull_request"]'), github.event_name) || !cancelled() # This is the function that we are testing
               run: echo "Event type is push or pull_request"
