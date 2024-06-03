@@ -14,8 +14,8 @@ jobs:
             - name: Testing success
               if: success()
               run: echo "Success!"
-            - name: failed step
-              run: exit 1
+            # - name: failed step
+            #   run: exit 1
             - name: Testing failure
               if: failure()
               run: echo "Failure!"
