@@ -29,8 +29,9 @@ jobs:
               run: echo "Building from tag ${{ inputs.tag }}"
     deploy-job:
         runs-on: ubuntu-latest
-        environment: ${{ github.event.inputs.target-env }}
+        environment: ${{ inputs.target-env }}
         if: ${{ success() }} && ${{ !inputs.dry-run }}
         steps:
             - name: Deploy
-              run: echo "Deploying to ${{ github.event.inputs.target-env }}"
+              run: |
+                echo "Deploying to AWS Region ${{ github.event.inputs.target-env }}"
