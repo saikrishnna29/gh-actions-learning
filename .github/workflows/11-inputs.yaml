@@ -31,8 +31,8 @@ jobs:
         runs-on: ubuntu-latest
         environment: ${{ inputs.target-env }}
         if: ${{ success() }} && ${{ !inputs.dry-run }}
-        # env:
-        #     DEV_REGION: ${{ inputs.target-env.DEV_REGION }}
+        env:
+            DEV_REGION: ${{ inputs.target-env.vars.DEV_REGION }}
         steps:
             - name: Deploy
               run: |
