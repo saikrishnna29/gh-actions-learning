@@ -6,7 +6,8 @@ on:
             run-tests:
                 description: 'Run tests'
                 required: true
-                type: boolean   
+                type: boolean
+                default: true   
 
 # By default jobs are executed in parallel
 jobs:
