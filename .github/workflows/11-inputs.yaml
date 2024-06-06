@@ -32,8 +32,8 @@ jobs:
         environment: ${{ inputs.target-env }}
         if: ${{ success() }} && ${{ !inputs.dry-run }}
         env:
-            DEV_REGION: ${{ inputs.target-env.vars.DEV_REGION }}
+            REGION: ${{ inputs.target-env.DEV_REGION }}
         steps:
             - name: Deploy
               run: |
-                echo "Deploying to AWS Region ${{ inputs.target-env.DEV_REGION }}"
+                echo "Deploying to AWS Region ${{ env.REGION }}"
