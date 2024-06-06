@@ -31,9 +31,10 @@ jobs:
         runs-on: ubuntu-latest
         environment: ${{ inputs.target-env }}
         if: ${{ success() }} && ${{ !inputs.dry-run }}
-        env:
-            REGION: ${{ inputs.target-env.DEV_REGION }}
+        # env:
+        #     REGION: ${{ inputs.target-env.DEV_REGION }}
         steps:
             - name: Deploy
               run: |
-                echo "Deploying to AWS Region ${{ env.REGION }}"
+                echo "Deploying to AWS Region ${{ github.env.DEV_REGION }}"
+                
