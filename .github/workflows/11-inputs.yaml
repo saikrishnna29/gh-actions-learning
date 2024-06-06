@@ -28,7 +28,7 @@ jobs:
               run: echo "Building from tag ${{ github.event.inputs.tag }}"
     deploy-job:
         runs-on: ubuntu-latest
-        if: ${{ success() }} && ${{ !github.event.inputs.dry-run }}
+        if: ${{ success() }} && ${{ github.event.inputs.dry-run }}
         environment: ${{ github.event.inputs.target-env }}
         steps:
             - name: Deploy
