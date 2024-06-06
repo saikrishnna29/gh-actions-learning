@@ -19,7 +19,7 @@ jobs:
     Unit-Tests-job:
         runs-on: ubuntu-latest
         steps:
-            - if: ${{ !github.event.inputs.run-tests }}
+            - if: ${{ !inputs.run-tests }}
               name: Unit Tests
               run: exit 1
     Deploy-non-prod-job:
