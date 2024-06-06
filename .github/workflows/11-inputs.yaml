@@ -10,6 +10,7 @@ on:
                 default: false
             target-env:
                 type: environment
+                required: true
                 description: 'Target environment for deployment'
             tag:
                 type: choice
@@ -28,8 +29,8 @@ jobs:
               run: echo "Building from tag ${{ github.event.inputs.tag }}"
     deploy-job:
         runs-on: ubuntu-latest
-        if: ${{ success() }} && ${{ github.event.inputs.dry-run }}
         environment: ${{ github.event.inputs.target-env }}
+        if: ${{ success() }} && ${{ !github.event.inputs.dry-run }}
         steps:
             - name: Deploy
               run: echo "Deploying to ${{ github.event.inputs.target-env }}"
