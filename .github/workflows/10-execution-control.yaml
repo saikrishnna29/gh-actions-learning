@@ -1,0 +1,35 @@
+name: 10-execution-workflow-control
+
+on:
+    workflow_dispatch:
+        inputs:
+            run-tests:
+                description: 'Run tests'
+                required: true
+                default: 'true' 
+
+# By default jobs are executed in parallel
+jobs:
+    build-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build
+              run: echo "Building the project"
+    Unit-Tests-job:
+        runs-on: ubuntu-latest
+        steps:
+            - if: ${{ !github.event.inputs.run-tests }}
+              name: Unit Tests
+              run: exit 1
+    Deploy-non-prod-job:
+        runs-on: ubuntu-latest
+        needs: [build-job, Unit-Tests-job]
+        steps:
+            - name: Deploy non-prod
+              run: echo "Deploying to non-prod"
+    Deploy-prod-job:
+        runs-on: ubuntu-latest
+        needs: [Deploy-non-prod-job]
+        steps:
+            - name: Deploy prod
+              run: echo "Deploying to prod"
