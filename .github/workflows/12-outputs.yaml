@@ -21,7 +21,7 @@ jobs:
             - name: Build
               id: build
               run: |
-                echo "$GITHUB_OUTPUT_PATH=$GITHUB_OUTPUT" 
+                echo "$GITHUB_OUTPUT_PATH=$GITHUB_OUTPUT"
                 echo "status=${{ inputs.build-status }}" >> "$GITHUB_OUTPUT"
                 echo "output_1=This is output 1" >> "$GITHUB_OUTPUT"
                 cat "$GITHUB_OUTPUT"
@@ -37,4 +37,3 @@ jobs:
               run: echo "Deploying"
             - name: Print output_1
               run: echo "output_1=${{ needs.build-job.outputs.output_1-status }}"
-        

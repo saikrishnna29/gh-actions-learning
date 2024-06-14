@@ -1,1 +1,3 @@
 node_modules
+*.svg
+.pre-commit-config.yaml

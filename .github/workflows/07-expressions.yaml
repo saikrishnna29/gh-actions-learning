@@ -27,5 +27,3 @@ jobs:
             - name: Debug mode
               run: |
                 echo "Debug mode is ${{ inputs.debug }}"
-
-
